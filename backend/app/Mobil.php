@@ -8,7 +8,7 @@ class Mobil extends Model
 {
     protected $fillable = [
         'nama',
-        'deksripsi',
+        'deskripsi',
         'speksifikasi'
     ];
 

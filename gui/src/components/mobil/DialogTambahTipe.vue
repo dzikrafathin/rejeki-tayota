@@ -1,7 +1,7 @@
 <template>
     <v-dialog
-      v-model="dialog"
-      width="500"
+        v-model="dialog"
+        max-width="500"
     >
         <template v-slot:activator="{ on }">
             <v-btn
@@ -9,7 +9,7 @@
                 bottom
                 right
                 v-on="on"
-                fixed
+                absolute
                 color="primary"
             >
                 <v-icon>mdi-plus</v-icon>
@@ -17,31 +17,24 @@
         </template>
         <v-card>
             <v-card-title>
-                Tambah Data Mobil
+                Tambah tipe baru
             </v-card-title>
             <v-card-text>
-                <v-form
-                    id="data"
+                <v-text-field
+                    v-model="form.tipe"
+                    label="Nama Tipe"
                 >
-                    <v-text-field
-                        label="Nama"
-                        name="nama"
-                    ></v-text-field>
-                    <v-textarea
-                        name="deskripsi"
-                        label="Deskripsi"
-                    >
-                    </v-textarea>
-                    <v-file-input
-                        label="Foto"
-                        name="foto[]"
-                        multiple
-                        prepend-icon="mdi-camera"
-                        chips
-                        dense
-                        outlined
-                    ></v-file-input>
-                </v-form>
+                </v-text-field>
+                <v-text-field
+                    v-model="form.harga"
+                    label="Harga Rp."
+                    type="number"
+                ></v-text-field>
+                <v-text-field
+                    v-model="form.stok"
+                    label="Stok"
+                    type="number"
+                ></v-text-field>
             </v-card-text>
             <v-card-actions>
                 <v-spacer/>
@@ -67,25 +60,27 @@
 <script>
 import RepositoryFactory from '@/repositories/RepositoryFactory.js'
 
-const mobil = RepositoryFactory.get('mobil');
+const tipeMobil = RepositoryFactory.get('tipeMobil');
 
 export default {
     props : ['tambah'],
     data : () => ({
         dialog : false,
+        form : {
+            tipe:'',
+            stok:0,
+            harga:0
+        }
     }),
     methods : {
-        tambahLocal: function() {
-            var data = new FormData(
-                document.getElementById("data")
-            );
+        tambahLocal() {
+            const mobilId = this.$route.params.id
 
-            mobil.buat(data)
+            tipeMobil.buat(mobilId, this.form)
             .then(res => {
                 this.tambah(res.data)
                 this.dialog = false
-            });
-
+            })
         }
     }
 }

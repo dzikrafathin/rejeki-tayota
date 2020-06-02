@@ -22,14 +22,21 @@
                <v-card>
                    <v-list-item>
                        <v-list-item-avatar>
-                           <v-icon
-                                class="grey lighten-2"
-                           >
-                               mdi-car
-                           </v-icon>
+                           <template v-if="mobil.foto == null">
+                                <v-icon
+                                        class="grey lighten-2"
+                                >
+                                    mdi-car
+                                </v-icon>
+                           </template>
+                           <template v-else>
+                               <v-img
+                                    :src="$baseURL + mobil.foto.url"
+                               ></v-img>
+                           </template>
                        </v-list-item-avatar>
                        <v-list-item-content>
-                           <v-list-item-title class="title">Avanza</v-list-item-title>
+                           <v-list-item-title class="title">{{mobil.nama}}</v-list-item-title>
                        </v-list-item-content>
                    </v-list-item>
                    <v-divider/>
@@ -40,7 +47,9 @@
                             <v-list-item 
                                 v-for="(menu,i) in daftarMenu"
                                 :key="i"
-                                link>
+                                link
+                                :href="`/mobil/${$route.params.id}/${menu.link}`"
+                                >
                                 <v-list-item-icon>
                                     <v-icon>
                                         {{menu.icon}}
@@ -57,28 +66,41 @@
     </v-container>
 </template>
 <script>
+import RepositoryFactory from '../repositories/RepositoryFactory.js'
+
+const mobil = RepositoryFactory.get('mobil');
+
 export default {
+    created() {
+        const mobilId = this.$route.params.id
+
+        mobil.lihat(mobilId)
+        .then(res => {
+            this.mobil = res.data
+        })
+    },
     data : () => ({
+        mobil : {},
         daftarMenu : [
             {
                 icon : 'mdi-pencil',
-                isi : 'Ubah Data'
+                isi : 'Ubah Data',
+                link: 'edit'
             },
             {
                 icon: 'mdi-car',
-                isi: 'Tipe Mobil'
+                isi: 'Tipe Mobil',
+                link: 'tipe'
             },
             {
                 icon : 'mdi-camera',
-                isi: 'Galeri Foto'
-            },
-            {
-                icon : 'mdi-currency-usd',
-                isi : 'Pemesanan'
+                isi: 'Galeri Foto',
+                link: 'foto'
             },
             {
                 icon : 'mdi-comment-multiple',
-                isi: 'Testimoni'
+                isi: 'Testimoni',
+                link: 'testimoni'
             }
         ]   
     })

@@ -18,7 +18,7 @@ class CreatePemesanansTable extends Migration
             $table->string('nama');
             $table->text('alamat');
             $table->string('noHp');
-            $table->integer('status');
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

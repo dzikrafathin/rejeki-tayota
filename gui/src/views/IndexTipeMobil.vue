@@ -12,25 +12,62 @@
                 <v-col md="3"><b>Aksi</b></v-col>
             </v-row>
             <item-tipe-mobil
-                :id="1"
-                tipe="TIPE X"
-                :harga="290000"
-                :stok="2"
+                v-for="tipe in daftarTipe"
+                :key="tipe.id"
+                :id="tipe.id"
+                :tipe="tipe.tipe"
+                :harga="tipe.harga"
+                :stok="tipe.stok"
+                :ubah="ubah"
+                :hapus="hapus"
             >
             </item-tipe-mobil>
+            <dialog-tambah-tipe
+                :tambah="tambah"
+            >
+            </dialog-tambah-tipe>
         </v-card-text>
     </v-card>
 </template>
 
 <script>
 import ItemTipeMobil from '../components/mobil/ItemTipeMobil.vue'
+import DialogTambahTipe from '../components/mobil/DialogTambahTipe.vue'
+import RepositoryFactory from '../repositories/RepositoryFactory.js'
+
+const tipeMobil = RepositoryFactory.get('tipeMobil');
 
 export default {
     components : {
-        ItemTipeMobil
+        ItemTipeMobil,
+        DialogTambahTipe
     },
     data : () => ({
-        
-    })
+        daftarTipe : []
+    }),
+    created() {
+        this.index();
+    },
+    methods : {
+        index() {
+            const mobilId = this.$route.params.id
+
+            tipeMobil.index(mobilId)
+            .then(res => {
+                this.daftarTipe = res.data
+            })
+        },
+        tambah(payload) {
+            this.daftarTipe.push(payload);
+        },
+        ubah(payload) {
+            const item = this.daftarTipe.find(item => item.id === payload.id);
+            Object.assign(item,payload);
+        },
+        hapus(id) {
+            const i = this.daftarTipe.map(item => item.id).indexOf(id);
+            this.daftarTipe.splice(i,1);
+        }
+    }
 }
 </script>

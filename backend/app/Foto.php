@@ -12,6 +12,6 @@ class Foto extends Model
     ];
 
     public function mobil() {
-        return $this->belongsTo('App\Foto');
+        return $this->belongsTo('App\Mobil');
     }
 }

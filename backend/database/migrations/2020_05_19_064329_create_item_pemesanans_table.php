@@ -15,7 +15,7 @@ class CreateItemPemesanansTable extends Migration
     {
         Schema::create('item_pemesanans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tipe_mobil_id');
+            $table->foreignId('tipe_mobil_id')->nullable();
             $table->foreignId('pemesanan_id');
             $table->integer('jumlah');
             $table->string('warna');

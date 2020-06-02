@@ -16,7 +16,7 @@ class ItemPemesanan extends Model
     }
 
     public function tipe() {
-        return $this->belongsTo('App\TipeMobil');
+        return $this->belongsTo('App\TipeMobil','tipe_mobil_id');
     }
 
 }

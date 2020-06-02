@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/home/KatalogMobil.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +9,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/katalog/:id',
+    name: 'Mobil Lengkap',
+    component: () => import('../views/home/MobilLengkap.vue')
   },
   {
     path: '/mobil',
@@ -32,6 +37,16 @@ Vue.use(VueRouter)
         path: 'tipe',
         name: 'Index tipe mobil',
         component: () => import('../views/IndexTipeMobil.vue')
+      },
+      {
+        path: 'foto',
+        name: 'Galeri foto mobil',
+        component: () => import('../views/GaleriFotoMobil.vue')
+      },
+      {
+        path: 'testimoni',
+        name: 'testimoni mobil',
+        component: () => import('../views/TestimoniMobil.vue')
       }
     ]
   }

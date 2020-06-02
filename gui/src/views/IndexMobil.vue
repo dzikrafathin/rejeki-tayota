@@ -1,25 +1,55 @@
 <template>
     <v-list>
         <ItemMobil 
-            :id="1"
-            nama="Yaris"
+            v-for="mobil in daftarMobil"
+            :key="mobil.id"
+            :id="mobil.id"
+            :nama="mobil.nama"
+            :foto="mobil.foto"
+            :hapus="hapus"
         />
-        <ItemMobil 
-            :id="2"
-            nama="Avanza"
+        <DialogTambah
+            :tambah="tambah"
         />
-        <DialogTambah/>
     </v-list>
 </template>
 
 <script>
 import ItemMobil from '../components/mobil/ItemMobil.vue'
 import DialogTambah from '../components/mobil/DialogTambah.vue'
+import RepositoryFactory from '../repositories/RepositoryFactory.js'
+
+const mobil = RepositoryFactory.get('mobil');
 
 export default {
     components : {
         ItemMobil,
         DialogTambah
+    },
+    data : () => ({
+        daftarMobil : []
+    }),
+    created() {
+        this.index();
+    },
+    methods : {
+        index : function() {
+            /*
+            const {data} = await mobil.index();
+            this.daftarMobil = data;*/
+            mobil.index()
+            .then(res => {
+                this.daftarMobil = res.data
+                console.log(res.data)
+            });
+        },
+        tambah : function(payload) {
+            this.daftarMobil.push({...payload});
+        },
+        hapus : function(id) {
+            const i = this.daftarMobil.map(item => item.id).indexOf(id);
+            this.daftarMobil.splice(i,1);
+        }
     }
 }
 </script>
