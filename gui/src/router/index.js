@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home/KatalogMobil.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
+    path: '/katalog',
     name: 'Home',
-    component: Home
+    component: () => import('../views/home/Katalog.vue')
   },
   {
     path: '/login',
