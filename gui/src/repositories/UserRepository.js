@@ -1,6 +1,18 @@
 import Client from './Clients/AxiosClient'
 
 export default {
+    index() {
+        return Client.get('/user')
+    },
+    buat(payload) {
+        return Client.post('/user', payload)
+    },
+    ubah(id, payload) {
+        return Client.put(`/user/${id}`, payload)
+    },
+    hapus(id) {
+        return Client.delete(`/user/${id}`)
+    },
     masuk(payload) {
         return Client.post('/masuk',payload)
     },

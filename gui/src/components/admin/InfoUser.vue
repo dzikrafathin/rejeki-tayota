@@ -41,6 +41,7 @@
                         <v-list-item
                             link
                             dense
+                            :to="`/admin/profil`"
                         >
                             <v-list-item-content>
                                 <v-list-item-title>Profil</v-list-item-title>

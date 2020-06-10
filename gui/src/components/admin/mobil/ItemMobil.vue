@@ -1,5 +1,7 @@
 <template>
-    <v-card>
+    <v-card
+        outlined
+    >
         <v-img 
             v-if="punyaFoto"
             :src="$baseURL + mobil.foto.url"

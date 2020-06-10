@@ -1,28 +1,37 @@
 <template>
-    <v-row>
-        <template v-if="error">
-            <v-alert type="error" outlined>
-                Terjadi kesalahan saat memuat data
-                <v-btn
-                    @click="mulai"
-                >
-                    Coba Lagi
-                </v-btn>
-            </v-alert>
-        </template>
-        <template v-else>
-            <v-col
-                md="4"
-                v-for="mobil in daftarMobil"
-                :key="mobil.id"
-            >
-                <item-mobil
-                    :mobil="mobil"
-                ></item-mobil>
-            </v-col>
-        </template>
-        <tambah-mobil/>
-    </v-row>
+    <v-card
+        :loading="loading"
+    >
+        <v-card-title>
+            Administrasi data Mobil
+        </v-card-title>
+        <v-card-text>
+            <v-row>
+                <template v-if="error">
+                    <v-alert type="error" outlined>
+                        Terjadi kesalahan saat memuat data
+                        <v-btn
+                            @click="mulai"
+                        >
+                            Coba Lagi
+                        </v-btn>
+                    </v-alert>
+                </template>
+                <template v-else>
+                    <v-col
+                        md="4"
+                        v-for="mobil in daftarMobil"
+                        :key="mobil.id"
+                    >
+                        <item-mobil
+                            :mobil="mobil"
+                        ></item-mobil>
+                    </v-col>
+                </template>
+                <tambah-mobil/>
+            </v-row>
+        </v-card-text>
+    </v-card>
 </template>
 
 <script>
@@ -37,6 +46,7 @@ export default {
     },
     data : () => ({
         error : false,
+        loading : true
     }),
     created() {
         this.mulai()
@@ -52,6 +62,9 @@ export default {
         }),
         mulai() {
             this.indexMobil()
+            .then(() => {
+                this.loading = false
+            })
             .catch(() => {
                 this.error = true
             })

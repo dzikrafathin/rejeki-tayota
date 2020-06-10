@@ -10,6 +10,35 @@ use App\User;
 class UserController extends Controller
 {
     
+    public function index() {
+        return User::all();
+    }
+
+    public function store(Request $request) {
+        $user = User::create($request->except('password'));
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json($user,201);
+    }
+
+    public function update(User $user, Request $request) {
+        $user->update($request->except('password'));
+
+        if ($request->has('password')) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+
+        return response()->json($user, 200);
+    }
+
+    public function destroy(User $user) {
+        $user->delete();
+        return response()->json(null, 204);
+    }
+
     public function profil(Request $request) {
         $user = $request->user();
         return $user;

@@ -24,6 +24,8 @@ Route::post('/masuk','UserController@masuk');
 Route::get('/profil','UserController@profil');
 Route::post('/profil','UserController@ubahProfil');
 
+Route::apiResource('user','UserController');
+
 Route::apiResource('mobil','MobilController');
 Route::apiResource('mobil.tipe','TipeMobilController')->shallow();
 Route::apiResource('mobil.foto','FotoController')->shallow();
