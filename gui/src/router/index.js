@@ -11,45 +11,59 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/katalog/:id',
-    name: 'Mobil Lengkap',
-    component: () => import('../views/home/MobilLengkap.vue')
+    path: '/login',
+    name : 'Halaman Login',
+    component: () => import('../views/auth/Login.vue')
   },
   {
-    path: '/mobil',
-    name: 'Index Mobil',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/IndexMobil.vue')
-  },
-  {
-    path: '/mobil/:id',
-    name: 'Detail Mobil',
-    component: () => import('../views/Mobil.vue'),
+    path : '/admin',
+    name : 'Halaman Administrasi',
+    component: () => import('../views/admin/BaseAdmin.vue'),
     children : [
       {
-        path: 'edit',
-        name: 'Edit data mobil',
-        component: () => import('../views/EditMobil.vue')
+        path : 'profil',
+        name : 'Profil Administrator',
+        component : () => import('../views/admin/user/Profil.vue')
       },
       {
-        path: 'tipe',
-        name: 'Index tipe mobil',
-        component: () => import('../views/IndexTipeMobil.vue')
+        path : 'user',
+        name : 'Administrasi Pengguna',
+        component : () => import('../views/admin/user/IndexUser.vue')
       },
       {
-        path: 'foto',
-        name: 'Galeri foto mobil',
-        component: () => import('../views/GaleriFotoMobil.vue')
+        path : 'mobil',
+        name : 'Administrasi Mobil',
+        component: () => import('../views/admin/mobil/IndexMobil.vue')
       },
       {
-        path: 'testimoni',
-        name: 'testimoni mobil',
-        component: () => import('../views/TestimoniMobil.vue')
+        path : 'mobil/:id',
+        name : 'Detail Mobil',
+        component: () => import('../views/admin/mobil/DetailMobil.vue'),
+        children : [
+          {
+            path : 'edit',
+            name : 'Ubah Detail Mobil',
+            component : () => import('../views/admin/mobil/EditMobil.vue')
+          },
+          {
+            path : 'tipe',
+            name : 'Daftar tipe dan harga Mobil',
+            component : () => import('../views/admin/mobil/TipeMobil.vue')
+          },
+          {
+            path : 'foto',
+            name : 'Galeri foto Mobil',
+            component : () => import('../views/admin/mobil/GaleriFotoMobil.vue')
+          },
+          {
+            path : 'testimoni',
+            name : 'Testimoni Pelanggan',
+            component : () => import('../views/admin/mobil/TestimoniMobil.vue')
+          }
+        ]
       }
     ]
-  }
+  },
 ]
 
 const router = new VueRouter({

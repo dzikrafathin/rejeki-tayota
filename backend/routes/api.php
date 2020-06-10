@@ -20,6 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('foto','FotoController@indexAll');
 Route::get('/katalog','MobilController@indexKatalog');
 
+Route::post('/masuk','UserController@masuk');
+Route::get('/profil','UserController@profil');
+Route::post('/profil','UserController@ubahProfil');
+
 Route::apiResource('mobil','MobilController');
 Route::apiResource('mobil.tipe','TipeMobilController')->shallow();
 Route::apiResource('mobil.foto','FotoController')->shallow();

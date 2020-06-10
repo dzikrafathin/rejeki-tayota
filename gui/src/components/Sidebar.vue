@@ -21,10 +21,9 @@ export default {
     data : () => ({
         items: [
           { title: 'Dashboard', icon: 'mdi-view-dashboard' },
+          { title: 'Data Admin', icon: 'mdi-account'},
           { title: 'Data Mobil', icon: 'mdi-car' },
-          { title: 'Pemesanan', icon: 'mdi-currency-usd'},
-          { title: 'Foto Mobil', icon: 'mdi-image' },
-          { title: 'Testimoni', icon: 'mdi-comment-multiple'}
+          { title: 'Pemesanan', icon: 'mdi-currency-usd'}
         ]
     })
 }
