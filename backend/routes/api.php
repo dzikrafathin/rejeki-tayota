@@ -31,6 +31,8 @@ Route::apiResource('mobil.tipe','TipeMobilController')->shallow();
 Route::apiResource('mobil.foto','FotoController')->shallow();
 Route::apiResource('mobil.testimoni','TestimoniController')->shallow();
 
+Route::get('/mobil/{mobil}/testimoni_publik','TestimoniController@indexPublik');
+
 Route::apiResource('pemesanan','PemesananController');
 Route::apiResource('pemesanan.item','ItemPemesananController')->shallow();
 

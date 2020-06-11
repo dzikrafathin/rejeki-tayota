@@ -49,7 +49,7 @@ class MobilController extends Controller
         foreach($daftarMobil as $mobil) {
             $foto = Foto::where('mobil_id',$mobil->id)->first();
 
-            $hargaGede = $mobil->tipe()->max('harga');
+            //$hargaGede = $mobil->tipe()->max('harga');
             $hargaKecil = $mobil->tipe()->min('harga');
 
             $mobil = $mobil->toArray();
@@ -60,11 +60,8 @@ class MobilController extends Controller
                 $mobil["foto"] = null;
             }
 
-            $mobil["harga"] = [
-                "max" => $hargaGede,
-                "min" => $hargaKecil
-            ];
-
+            $mobil["harga"] = $hargaKecil;
+            
             array_push($ret,$mobil);
         }
 

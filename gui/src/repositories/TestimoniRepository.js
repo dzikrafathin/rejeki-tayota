@@ -6,6 +6,9 @@ export default {
     index(id) {
         return Client.get(`${parent}/${id}${resource}`);
     },
+    indexPublik(id) {
+        return Client.get(`${parent}/${id}${resource}_publik`)
+    },
     lihat(id) {
         return Client.get(`${resource}/${id}`);
     },

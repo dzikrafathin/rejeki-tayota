@@ -10,6 +10,16 @@ Vue.use(VueRouter)
     component: () => import('../views/home/Katalog.vue')
   },
   {
+    path: '/mobil/:id',
+    name: 'Detail Mobil',
+    component: () => import('../views/home/Mobil.vue')
+  },
+  {
+    path: '/pemesanan',
+    name: 'Form Pemesanan',
+    component: () => import('../views/home/Pemesanan.vue')
+  },
+  {
     path: '/login',
     name : 'Halaman Login',
     component: () => import('../views/auth/Login.vue')

@@ -5,6 +5,7 @@ import mobil from './mobil'
 import foto from './foto'
 import tipe from './tipe'
 import testimoni from './testimoni'
+import pemesanan from './pemesanan'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     mobil : mobil,
     foto : foto,
     tipe : tipe,
-    testimoni : testimoni
+    testimoni : testimoni,
+    pemesanan : pemesanan
   }
 })

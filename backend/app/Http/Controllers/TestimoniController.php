@@ -18,6 +18,10 @@ class TestimoniController extends Controller
         return $mobil->testimoni;
     }
 
+    public function indexPublik(Mobil $mobil) {
+        return $mobil->testimoni()->where('terverifikasi',1)->get();
+    }
+
 
     /**
      * Store a newly created resource in storage.
