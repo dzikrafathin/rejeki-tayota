@@ -120,6 +120,7 @@ export default {
             .then(() => {
                 commit('auth_keluar')
                 delete Client.defaults.headers.common['Authorization']
+                localStorage.removeItem('token')
                 router.push('/login')
             })
         },

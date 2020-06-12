@@ -7,6 +7,10 @@ import vuetify from './plugins/vuetify';
 Vue.config.productionTip = false
 Vue.prototype.$baseURL = 'http://localhost:8000/'
 
+if (store.getters.isLoggedIn) {
+  store.dispatch('isiUser')
+}
+
 new Vue({
   router,
   store,

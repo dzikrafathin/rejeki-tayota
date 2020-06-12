@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import store from '../store'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -16,7 +17,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/mobil/:id',
-    name: 'Detail Mobil',
+    name: 'Detail Mobil Home',
     component: () => import('../views/home/Mobil.vue')
   },
   {
@@ -33,7 +34,15 @@ Vue.use(VueRouter)
     path : '/admin',
     name : 'Halaman Administrasi',
     component: () => import('../views/admin/BaseAdmin.vue'),
+    meta : {
+      requiresAuth : true
+    },
     children : [
+      {
+        path : 'dashboard',
+        name : 'Halaman Dashboard',
+        component : () => import('../views/admin/Dashboard.vue')
+      },
       {
         path : 'profil',
         name : 'Profil Administrator',
@@ -94,6 +103,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/login') 
+  } else {
+    next() 
+  }
 })
 
 export default router

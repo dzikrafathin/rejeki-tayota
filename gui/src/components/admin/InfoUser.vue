@@ -1,8 +1,6 @@
 <template>
-    <v-card
-        :loading="loading"
-    >
-        <template v-if="!loading">
+    <v-card>
+        <template>
             <template v-if="error">
                 <v-alert type="error" outlined>
                     Terjadi kesalahan saat memuat data
@@ -83,7 +81,7 @@ export default {
         }
     },
     created() {
-        this.mulai()
+        //this.mulai()
     },
     methods : {
         ...mapActions({

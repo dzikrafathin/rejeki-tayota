@@ -88,7 +88,7 @@ export default {
             this.masuk(this.form)
             .then(() => {
                 this.pesanSukses('Login Berhasil')
-                this.$router.push('/admin')
+                this.$router.push('/admin/dashboard')
             }).catch(err => {
                 this.error = err.response.data
                 this.pesanGagal('Terjadi Kesalahan')
