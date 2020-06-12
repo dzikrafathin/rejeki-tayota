@@ -8,6 +8,9 @@ export default {
     lihat(id) {
         return Client.get(`${resource}/${id}`);
     },
+    lihatItem(id) {
+        return Client.get(`${resource}/${id}/item`)
+    },
     buat(payload) {
         return Client.post(`${resource}`,payload);
     },

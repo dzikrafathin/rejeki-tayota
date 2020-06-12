@@ -15,6 +15,7 @@ class ItemPemesananController extends Controller
      */
     public function index(Pemesanan $pemesanan)
     {
+        //echo "TEST";
         return $pemesanan->item()->with('tipe.mobil')->get();
     }
 

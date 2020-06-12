@@ -34,5 +34,6 @@ Route::apiResource('mobil.testimoni','TestimoniController')->shallow();
 Route::get('/mobil/{mobil}/testimoni_publik','TestimoniController@indexPublik');
 
 Route::apiResource('pemesanan','PemesananController');
+//Route::get('/pemesanan/test/item','ItemPemesananController@index');
 Route::apiResource('pemesanan.item','ItemPemesananController')->shallow();
 

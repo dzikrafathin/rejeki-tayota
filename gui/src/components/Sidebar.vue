@@ -24,7 +24,7 @@ export default {
           { title: 'Dashboard', icon: 'mdi-view-dashboard', to: ''},
           { title: 'Data Admin', icon: 'mdi-account', to: '/admin/user'},
           { title: 'Data Mobil', icon: 'mdi-car', to: '/admin/mobil'},
-          { title: 'Pemesanan', icon: 'mdi-currency-usd', to : ''}
+          { title: 'Pemesanan', icon: 'mdi-currency-usd', to : '/admin/pemesanan'}
         ]
     })
 }

@@ -5,8 +5,13 @@ Vue.use(VueRouter)
 
   const routes = [
   {
+    path : '/',
+    name : 'Home',
+    component: () => import('../views/home/Home.vue')
+  },
+  {
     path: '/katalog',
-    name: 'Home',
+    name: 'Katalog',
     component: () => import('../views/home/Katalog.vue')
   },
   {
@@ -70,6 +75,16 @@ Vue.use(VueRouter)
             component : () => import('../views/admin/mobil/TestimoniMobil.vue')
           }
         ]
+      },
+      {
+        path : 'pemesanan',
+        name : 'Administrasi Pemesanan',
+        component: () => import ('../views/admin/pemesanan/IndexPemesanan.vue')
+      },
+      {
+        path : 'pemesanan/:id',
+        name : 'Detail Pemesanan',
+        component: () => import('../views/admin/pemesanan/DetailPemesanan.vue')
       }
     ]
   },

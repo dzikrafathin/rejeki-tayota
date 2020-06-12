@@ -9,8 +9,12 @@ export default {
         daftarMobil : [],
         daftarTipe : [],
         items : [],
+        daftarPemesanan : []
     }),
     mutations : {
+        index_pemesanan(state, payload) {
+            state.daftarPemesanan = payload
+        },
         index_daftar_mobil(state, payload) {
             state.daftarMobil = payload
         },
@@ -30,6 +34,17 @@ export default {
         }
     },
     actions : {
+        indexPemesanan({commit}) {
+            return new Promise((resolve, reject) => {
+                pemesanan.index()
+                .then(res => {
+                    commit('index_pemesanan', res.data)
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        },
         kirimPemesanan({state}, payload) {
             return new Promise((resolve, reject) => {
                 const dataPemesanan = {...payload}
