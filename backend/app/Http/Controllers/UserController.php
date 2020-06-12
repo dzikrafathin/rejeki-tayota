@@ -94,4 +94,11 @@ class UserController extends Controller
             ],422);
         }
     }
+
+    public function keluar(Request $request) {
+        $user = $request->user();
+        $user->api_token = null;
+        $user->save();
+        return response()->json(null,204);
+    }
 }

@@ -16,6 +16,9 @@ export default {
     masuk(payload) {
         return Client.post('/masuk',payload)
     },
+    keluar() {
+        return Client.post('/keluar')
+    },
     profil() {
         return Client.get('/profil')
     },

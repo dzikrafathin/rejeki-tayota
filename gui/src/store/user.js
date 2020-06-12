@@ -1,5 +1,6 @@
 import Client from '../repositories/Clients/AxiosClient'
 import RepositoryFactory from '../repositories/RepositoryFactory'
+import router from '../router/index'
 
 const userRepo = RepositoryFactory.get('user');
 
@@ -33,6 +34,10 @@ export default {
         auth_error(state) {
             state.authStatus = 'error'
             state.userSekarang = null
+        },
+        auth_keluar(state) {
+            state.userSekarang = null
+            state.token = ''
         },
         isi_user(state, user) {
             state.userSekarang = user
@@ -108,6 +113,14 @@ export default {
                     reject(err)
 
                 })
+            })
+        },
+        keluar({commit}) {
+            userRepo.keluar()
+            .then(() => {
+                commit('auth_keluar')
+                delete Client.defaults.headers.common['Authorization']
+                router.push('/login')
             })
         },
         isiUser({commit}) {

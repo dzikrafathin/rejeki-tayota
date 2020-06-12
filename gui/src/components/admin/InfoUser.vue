@@ -50,6 +50,7 @@
                         <v-list-item
                             link
                             dense
+                            @click="keluar"
                         >
                             <v-list-item-content>
                                 <v-list-item-title>Logout</v-list-item-title>
@@ -86,7 +87,8 @@ export default {
     },
     methods : {
         ...mapActions({
-            isiUser : 'isiUser'
+            isiUser : 'isiUser',
+            keluar : 'keluar'
         }),
         mulai() {
             if (this.isLoggedIn) {

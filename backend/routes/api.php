@@ -21,6 +21,7 @@ Route::get('foto','FotoController@indexAll');
 Route::get('/katalog','MobilController@indexKatalog');
 
 Route::post('/masuk','UserController@masuk');
+Route::post('/keluar','UserController@keluar');
 Route::get('/profil','UserController@profil');
 Route::post('/profil','UserController@ubahProfil');
 
