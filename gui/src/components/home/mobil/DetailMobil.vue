@@ -21,6 +21,14 @@
                 </p> 
                 {{mobil.speksifikasi}}
             </v-card-text>
+            <v-card-actions>
+                <v-btn
+                    color="success"
+                    to="/pemesanan"
+                    text>
+                    Pesan Sekarang
+                    </v-btn>
+            </v-card-actions>
         </template>
         <v-alert
             v-else

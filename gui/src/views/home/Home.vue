@@ -1,75 +1,60 @@
 <template>
     <v-container fluid>
-        <v-row
-            align="center"
-            justify="center"
-        >
-            <v-col
-                md="8"
-            >
-                <v-card
-                    min-height="200px"
-                    style="margin-top:200px;padding-top:100px"
-                >
-                <v-row
-                    justify="center"
-                >
-                    <v-carousel
-    cycle
-    height="300"
-    hide-delimiter-background
-    show-arrows-on-hover
-    
-    style="position:absolute;top:-200px;width:60%"
-  >
-    <v-carousel-item
-      v-for="(slide, i) in slides"
-      :key="i"
-    >
-      <v-sheet
-        :color="colors[i]"
-        height="100%"
+      <v-row
+        justify="center"
       >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-3">{{ slide }} Slide</div>
-        </v-row>
-      </v-sheet>
-    </v-carousel-item>
-  </v-carousel>
-                </v-row>
-                <v-sheet>
-                    <h1>Rejeki Toyota</h1>
-                </v-sheet>
-                </v-card>
-            </v-col>
-        </v-row>
+        <v-col
+          md="8">
+          <v-card>
+            <v-row
+              no-gutters
+            >
+              <v-col
+                md="6"
+              >
+                <v-card-title
+                  class="display-1"
+                >
+                  Rejeki Toyota
+                </v-card-title>
+                <v-card-text>
+                  REJEKI TOYOTA adalah salah satu Authorized TOYOTA Dealer di Cirebon. 
+                  Didirikan di Cirebon pada 18 Juli 2002 dengan nama REJEKI JAYA SENTOSA. 
+                  Kemudian pada tanggal 1 Juli 2007 perusahaan melakukan re-managemen untuk meningkatkan pelayanan kepada pelanggan. 
+                  Nama baru perusahaan menjadi PT. REJEKI JAYA MAKMUR SENTOSA dan dikenal dengan nama REJEKI TOYOTA.
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer/>
+                  <v-btn 
+                    text
+                    to="/katalog"
+                    color="primary"
+                  >Lihat Daftar Mobil</v-btn>
+                  <v-btn 
+                    text
+                    to="/pemesanan"
+                    color="success"
+                  >Pesan Mobil</v-btn>
+                </v-card-actions>
+              </v-col>
+              <v-col
+                md="6">
+                <v-img
+                  height="400px"
+                  src="https://www.toyota-europe.com/logo.jpg"
+                  contain
+                ></v-img>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
 </template>
 
 <script>
-export default {
-    data () {
-      return {
-        colors: [
-          'indigo',
-          'warning',
-          'pink darken-2',
-          'red lighten-1',
-          'deep-purple accent-4',
-        ],
-        slides: [
-          'First',
-          'Second',
-          'Third',
-          'Fourth',
-          'Fifth',
-        ],
-      }
-    },
+  export default {
+    data: () => ({
+    })
   }
-
 </script>
