@@ -24,13 +24,14 @@
                         >mdi-car</v-icon>
                     </v-row>
                 </v-sheet>
-                <v-card-title>10</v-card-title>
+                <v-card-title>5</v-card-title>
                 <v-card-subtitle>Mobil</v-card-subtitle>
                 <v-card-actions>
                     <v-btn
                         text
                         small
                         color="primary"
+                        to="/admin/mobil"
                     >
                         Selengkapnya
                     </v-btn>
@@ -61,13 +62,14 @@
                         >mdi-account</v-icon>
                     </v-row>
                 </v-sheet>
-                <v-card-title>5</v-card-title>
+                <v-card-title>2</v-card-title>
                 <v-card-subtitle>Data Admin</v-card-subtitle>
                 <v-card-actions>
                     <v-btn
                         text
                         small
                         color="primary"
+                        to="/admin/user"
                     >
                         Selengkapnya
                     </v-btn>
@@ -105,6 +107,7 @@
                         text
                         small
                         color="primary"
+                        to="/admin/pemesanan"
                     >
                         Selengkapnya
                     </v-btn>
